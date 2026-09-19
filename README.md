@@ -241,6 +241,8 @@ CLI Output Presentation (Formatted Table / JSON)
 4. **Minimal External Dependencies**: Leverages the Go standard library wherever possible. External packages are introduced only when standard library facilities are insufficient.
 5. **No Featuritis**: Avoids unrelated offensive functionality, password guessing, or exploit payloads.
 
+Detailed architectural diagrams, component boundaries, and layer flows are documented in [docs/architecture.md](docs/architecture.md).
+
 ---
 
 ## 🛠️ Technology Stack
@@ -300,6 +302,8 @@ sudo sysctl -w net.ipv4.ping_group_range="0 2147483647"
 sudo setcap cap_net_raw+ep ./bin/lanobs
 ```
 
+For complete development environment setup and troubleshooting, refer to [docs/development.md](docs/development.md).
+
 ---
 
 ## 🗺️ Roadmap
@@ -317,6 +321,8 @@ The roadmap organizes implementation into sequential, verifiable milestones:
 * **M8 — PCAP Analysis**: Provide offline packet capture analysis (`.pcap` / `.pcapng`) for historical network auditing and host behavior verification.
 * **M9 — Defensive Detection**: Build deterministic security findings based on observed network changes and policy deviations (e.g., unauthorized devices, gateway drift).
 * **M10 — Linux Distribution**: Provide production Linux daemon integration, systemd service units, ARM64 / Raspberry Pi builds, and Debian (`.deb`) packages.
+
+For detailed milestone deliverables and acceptance criteria, consult [docs/roadmap.md](docs/roadmap.md).
 
 ---
 
@@ -340,21 +346,17 @@ LAN Observatory explicitly refuses to implement offensive security techniques, i
 
 All observation logic is structured to gather non-invasive telemetry necessary for inventory, diagnostics, baseline tracking, and defensive auditing.
 
-For our full security policy and vulnerability disclosure procedures, refer to [`docs/security.md`](docs/security.md).
+For our full security policy and vulnerability disclosure procedures, refer to [SECURITY.md](SECURITY.md).
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please ensure all contributions adhere to the project's defensive goals:
-
-1. Review the [Security & Authorization](#-security--authorization) principles before proposing network inspection capabilities.
-2. Ensure all changes include comprehensive unit tests executed with the Go race detector (`go test -race ./...`).
-3. Follow idiomatic Go style, pass `go vet ./...`, and maintain clean `gofmt` formatting.
-4. Follow Conventional Commits for commit messages (`feat:`, `fix:`, `docs:`, `refactor:`).
+Contributions are welcome! Please review [CONTRIBUTING.md](CONTRIBUTING.md) for branch naming conventions, Conventional Commits, SSH commit signing requirements, and the Definition of Done checklist.
 
 ---
 
 ## 📄 License
 
-A project license will be selected and added prior to the first public release.
+The project license selection is currently unresolved and will be determined prior to the initial public release.
+
