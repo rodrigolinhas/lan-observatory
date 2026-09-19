@@ -1,0 +1,42 @@
+# Binaries and build artifacts
+bin/
+lanobs
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test artifacts and coverage
+coverage/
+*.out
+*.test
+*.prof
+
+# Packet captures and network traces
+*.pcap
+*.pcapng
+*.cap
+
+# Environment and sensitive configuration
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Editor and IDE configurations
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files and logs
+tmp/
+scratch/
+*.log
