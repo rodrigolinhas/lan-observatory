@@ -1,0 +1,46 @@
+name: 📡 Protocol / Collector Proposal
+description: Propose a new local network observation signal or protocol collector
+title: "[PROPOSAL]: "
+labels: ["protocol-proposal"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template when proposing new protocol observations (e.g., mDNS, ARP cache inspection, SSDP, or ICMP extensions) for LAN Observatory.
+
+  - type: textarea
+    id: protocol_name
+    attributes:
+      label: Protocol & Observable Telemetry
+      description: What network protocol or signal do you propose observing?
+      placeholder: "e.g. Passive ARP table reading or mDNS service discovery (_http._tcp.local)."
+    validations:
+      required: true
+
+  - type: textarea
+    id: defensive_value
+    attributes:
+      label: Defensive Observability Value
+      description: What device identity, baseline property, or drift does this signal reveal?
+    validations:
+      required: true
+
+  - type: textarea
+    id: network_footprint
+    attributes:
+      label: Network Footprint & Safety Model
+      description: How is this observation performed safely? (e.g. passive listening vs bounded query, rate limits, timeouts)
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: prerequisites
+    attributes:
+      label: Protocol Prerequisites
+      options:
+        - label: Can be implemented using Go standard library or vetted x/net packages.
+          required: true
+        - label: Does not disrupt fragile embedded devices or flood the broadcast domain.
+          required: true
+        - label: Does not perform intrusive banner grabbing or service fuzzing.
+          required: true

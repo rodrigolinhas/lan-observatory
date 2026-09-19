@@ -1,0 +1,60 @@
+name: 💡 Feature Request
+description: Propose a new capability or architectural enhancement for LAN Observatory
+title: "[FEATURE]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem Statement
+      description: What operational visibility challenge does this feature address?
+      placeholder: "e.g. Currently, there is no structured way to export discovery diffs to a webhook or local file."
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed_solution
+    attributes:
+      label: Proposed Solution
+      description: Describe your proposed design, CLI flag, or architectural change.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: milestone
+    attributes:
+      label: Target Milestone
+      options:
+        - M0 — Project Foundation
+        - M1 — Network Discovery
+        - M2 — Device Inventory
+        - M3 — Persistent Network History
+        - M4 — Continuous Observation
+        - M5 — Interactive TUI
+        - M6 — Local Network Intelligence
+        - M7 — Service Observation
+        - M8 — PCAP Analysis
+        - M9 — Defensive Detection
+        - M10 — Linux Distribution
+        - General / Infrastructure
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: defensive_validation
+    attributes:
+      label: Defensive Scope & Safety Confirmation
+      description: LAN Observatory is strictly a defensive network observability tool.
+      options:
+        - label: This feature does NOT introduce offensive exploitation, credential attacks, or evasive packet crafting.
+          required: true
+        - label: This feature respects bounded concurrency, timeouts, and network safety constraints.
+          required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: Any alternative designs, external tools, or workflows you considered.
+    validations:
+      required: false

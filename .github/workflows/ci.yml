@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    name: Build & Test (Go)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.27'
+          check-latest: true
+
+      - name: Verify Formatting (gofmt)
+        run: |
+          UNFORMATTED=$(gofmt -l .)
+          if [ -n "$UNFORMATTED" ]; then
+            echo "The following files are not formatted with gofmt:"
+            echo "$UNFORMATTED"
+            exit 1
+          fi
+
+      - name: Run Go Vet
+        if: hashFiles('go.mod') != ''
+        run: go vet ./...
+
+      - name: Run Tests with Race Detector
+        if: hashFiles('go.mod') != ''
+        run: go test -v -race ./...
+
+      - name: Run govulncheck
+        if: hashFiles('go.mod') != ''
+        uses: golang/govulncheck-action@v1
+        with:
+          go-version-input: '1.27'
+          go-package: ./...
+
+      - name: Build Binary
+        if: hashFiles('cmd/lanobs/main.go') != ''
+        run: go build -v -o bin/lanobs ./cmd/lanobs
